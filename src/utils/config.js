@@ -2,7 +2,7 @@
 export const config = {
   // Toggle between coming soon page and full website
   // Set to true for coming soon, false for full website
-  showComingSoon: false,
+  showComingSoon: true,
   
   // Other feature flags can be added here
   enablePayments: true,
