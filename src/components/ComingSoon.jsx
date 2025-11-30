@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import TOBLogo from '../assets/images/TOBlogo-dev.png'
 
 const ComingSoon = () => {
@@ -238,11 +239,11 @@ const ComingSoon = () => {
           <div className="mt-8 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400 space-y-4 md:space-y-0">
             <p>© 2025 TaskOnBoard</p>
             <div className="flex space-x-6">
-              <a href="#" className="hover:text-white transition">Terms of Use</a>
+              <Link to="/terms" className="hover:text-white transition">Terms of Use</Link>
               <span>|</span>
-              <a href="#" className="hover:text-white transition">Privacy Policy</a>
+              <Link to="/privacy" className="hover:text-white transition">Privacy Policy</Link>
               <span>|</span>
-              <a href="#" className="hover:text-white transition">Cookie Notice</a>
+              <Link to="/cookies" className="hover:text-white transition">Cookie Notice</Link>
             </div>
           </div>
         </div>

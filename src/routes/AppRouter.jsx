@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import MainLayout from '../layouts/MainLayout'
 import Home from '../pages/Home'
 import BecomeTasker from '../pages/BecomeTasker'
+import TermsOfUse from '../pages/TermsOfUse'
+import PrivacyPolicy from '../pages/PrivacyPolicy'
+import CookieNotice from '../pages/CookieNotice'
 import { config } from '../utils/config'
 
 const AppRouter = () => {
@@ -28,7 +31,11 @@ const AppRouter = () => {
             <BecomeTasker />
           </MainLayout>
         } />
-        {/* Add more routes here */}
+        
+        {/* Legal pages - standalone without layout */}
+        <Route path="/terms" element={<TermsOfUse />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/cookies" element={<CookieNotice />} />
       </Routes>
     </Router>
   )
