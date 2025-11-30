@@ -35,4 +35,4 @@ if (import.meta.env.VITE_SHOW_COMING_SOON === 'true') {
   config.showComingSoon = false
 }
 
-export default config 
+export default config // force deploy Sat Nov 29 19:01:48 EST 2025
