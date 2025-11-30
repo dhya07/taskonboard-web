@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import TOBLogo from '../assets/images/TOBlogo-dev.png'
+import PostingMockup from '../assets/postingMockup.png'
 
 const ComingSoon = () => {
   return (
@@ -120,36 +121,12 @@ const ComingSoon = () => {
             </div>
 
             {/* Phone Mockup */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-[550px] bg-gradient-to-br from-gray-800 to-gray-900 rounded-[3rem] p-3 shadow-2xl border-4 border-gray-700">
-              <div className="bg-white rounded-[2.5rem] h-full overflow-hidden">
-                {/* Phone Screen Content */}
-                <div className="bg-gradient-to-br from-[#1a2332] to-[#2d3748] h-full p-6">
-                  <div className="text-center mb-4">
-                    <h3 className="text-lg font-bold">Available Taskers</h3>
-                    <p className="text-xs text-gray-400">Near you • Montréal</p>
-                  </div>
-                  
-                  {/* Sample Tasker Cards */}
-                  <div className="space-y-3">
-                    {[1, 2, 3].map((i) => (
-                      <div key={i} className="bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/20">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center space-x-3">
-                            <div className="w-12 h-12 bg-[#4ade80] rounded-full"></div>
-                            <div>
-                              <h4 className="font-semibold text-sm">Tasker Name</h4>
-                              <p className="text-xs text-gray-400">⭐ 4.9 • 50+ tasks</p>
-                            </div>
-                          </div>
-                          <button className="bg-[#4ade80] text-black text-xs px-4 py-2 rounded-lg font-semibold">
-                            Book
-                          </button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+              <img 
+                src={PostingMockup} 
+                alt="TaskOnBoard App Mockup" 
+                className="w-80 h-auto drop-shadow-2xl"
+              />
             </div>
           </div>
         </div>
