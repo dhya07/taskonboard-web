@@ -1,5 +1,5 @@
 // API Constants
-export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'
+export const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://taskonboard.onrender.com/api'
 
 // Firebase Config (to be filled with actual values)
 export const FIREBASE_CONFIG = {

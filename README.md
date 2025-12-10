@@ -67,7 +67,7 @@ VITE_FIREBASE_APP_ID=your_app_id_here
 VITE_STRIPE_PUBLIC_KEY=your_stripe_public_key_here
 
 # API Configuration
-VITE_API_BASE_URL=http://localhost:3000/api
+VITE_API_URL=https://taskonboard.onrender.com/api
 ```
 
 ## 📱 Features
