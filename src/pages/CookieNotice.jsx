@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
-import TOBLogo from '../assets/images/TOBlogo-dev.png'
+import TOBLogo from '../assets/Logo/tob-logo-light.png'
 
 const CookieNotice = () => {
   return (
@@ -16,10 +16,10 @@ const CookieNotice = () => {
         <header className="border-b border-gray-200 bg-white sticky top-0 z-50 shadow-sm">
           <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
             <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition">
-              <img src={TOBLogo} alt="TaskOnBoard" className="w-8 h-8 object-contain" />
-              <span className="text-xl font-bold text-[#1a2332]">TaskOnBoard</span>
+              <img src={TOBLogo} alt="TaskOnBoard" className="h-12 w-auto object-contain" />
+             
             </Link>
-            <Link to="/" className="text-sm text-gray-600 hover:text-[#4ade80] transition">
+            <Link to="/" className="text-sm text-gray-600 hover:text-[#32A49D] transition">
               ← Back to Home
             </Link>
           </div>
@@ -286,11 +286,11 @@ const CookieNotice = () => {
             <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 space-y-4 md:space-y-0">
               <p>© 2025 TaskOnBoard. All rights reserved.</p>
               <div className="flex space-x-6">
-                <Link to="/terms" className="hover:text-[#4ade80] transition">Terms of Use</Link>
+                <Link to="/terms" className="hover:text-[#32A49D] transition">Terms of Use</Link>
                 <span>|</span>
-                <Link to="/privacy" className="hover:text-[#4ade80] transition">Privacy Policy</Link>
+                <Link to="/privacy" className="hover:text-[#32A49D] transition">Privacy Policy</Link>
                 <span>|</span>
-                <Link to="/cookies" className="hover:text-[#4ade80] transition">Cookie Notice</Link>
+                <Link to="/cookies" className="hover:text-[#32A49D] transition">Cookie Notice</Link>
               </div>
             </div>
           </div>

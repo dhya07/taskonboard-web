@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import TOBLogo from "../assets/images/TOBlogo-dev.png";
+import TOBLogo from "../assets/Logo/tob-logo-light.png";
 
 const PrivacyPolicy = () => {
   return (
@@ -25,15 +25,12 @@ const PrivacyPolicy = () => {
               <img
                 src={TOBLogo}
                 alt="TaskOnBoard"
-                className="w-8 h-8 object-contain"
+                className="h-12 w-auto object-contain"
               />
-              <span className="text-xl font-bold text-[#1a2332]">
-                TaskOnBoard
-              </span>
             </Link>
             <Link
               to="/"
-              className="text-sm text-gray-600 hover:text-[#4ade80] transition"
+              className="text-sm text-gray-600 hover:text-[#32A49D] transition"
             >
               ← Back to Home
             </Link>
@@ -46,20 +43,13 @@ const PrivacyPolicy = () => {
             Privacy Policy
           </h1>
           <p className="text-sm text-gray-500 mb-8">
-            Last updated: November 30, 2025
+            Last updated: November 30, 2024
           </p>
 
           <div className="prose prose-lg max-w-none">
             {/* 1. Introduction */}
             <section className="mb-8">
-              <h1 className="text-3xl font-bold text-[#1a2332] mb-2">
-                TaskOnBoard Privacy Policy
-              </h1>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                <span className="font-semibold">Last updated:</span>{" "}
-                {/* add a date if you want, e.g. October 2025 */}
-              </p>
-
+    
               <h2 className="text-2xl font-bold text-[#1a2332] mb-4">
                 1. Introduction
               </h2>
@@ -753,7 +743,7 @@ const PrivacyPolicy = () => {
                     href="mailto:privacy@taskonboard.com"
                     className="text-[#1a2332] underline"
                   >
-                    privacy@taskonboard.com
+                    support@taskonboard.com
                   </a>
                 </li>
                 <li>
@@ -794,7 +784,7 @@ const PrivacyPolicy = () => {
               <p className="text-gray-700 leading-relaxed mb-4">
                 TaskOnBoard uses automated tools only to support core platform
                 functions such as safety, task matching, fraud detection, and
-                app performance — never to make decisions with legal or
+                app performance never to make decisions with legal or
                 significant effects on you without human review.
               </p>
 
@@ -1148,7 +1138,6 @@ const PrivacyPolicy = () => {
 
               <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
                 <p className="text-gray-700 font-semibold">TaskOnBoard Inc.</p>
-                <p className="text-gray-700">Montréal, QC, Canada</p>
                 <p className="text-gray-700">
                   Email:{" "}
                   <a
@@ -1170,15 +1159,15 @@ const PrivacyPolicy = () => {
             <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 space-y-4 md:space-y-0">
               <p>© 2025 TaskOnBoard. All rights reserved.</p>
               <div className="flex space-x-6">
-                <Link to="/terms" className="hover:text-[#4ade80] transition">
+                <Link to="/terms" className="hover:text-[#32A49D] transition">
                   Terms of Use
                 </Link>
                 <span>|</span>
-                <Link to="/privacy" className="hover:text-[#4ade80] transition">
+                <Link to="/privacy" className="hover:text-[#32A49D] transition">
                   Privacy Policy
                 </Link>
                 <span>|</span>
-                <Link to="/cookies" className="hover:text-[#4ade80] transition">
+                <Link to="/cookies" className="hover:text-[#32A49D] transition">
                   Cookie Notice
                 </Link>
               </div>
