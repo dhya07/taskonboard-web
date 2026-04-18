@@ -1,0 +1,42 @@
+{
+  "app": { "name": "Administration TaskOnBoard" },
+  "nav": {
+    "dashboard": "Tableau de bord",
+    "providers": "Prestataires",
+    "customers": "Clients",
+    "bookings": "Réservations",
+    "payments": "Paiements",
+    "reviews": "Avis",
+    "disputes": "Litiges",
+    "settings": "Paramètres",
+    "logout": "Déconnexion"
+  },
+  "login": {
+    "title": "Connexion administrateur",
+    "subtitle": "TaskOnBoard — Canada",
+    "email": "Courriel",
+    "password": "Mot de passe",
+    "submit": "Se connecter",
+    "error": "Échec de la connexion",
+    "notAdmin": "Ce compte n’est pas autorisé pour l’administration."
+  },
+  "topbar": { "searchPlaceholder": "Rechercher…" },
+  "common": { "loading": "Chargement…", "error": "Une erreur s’est produite", "save": "Enregistrer", "cancel": "Annuler", "language": "Langue" },
+  "providers": {
+    "title": "Prestataires",
+    "subtitle": "Examiner les demandes et gérer le statut.",
+    "pendingQueue": "En attente d’approbation (3 prochains)",
+    "allTitle": "Tous les prestataires",
+    "approve": "Approuver",
+    "reject": "Refuser",
+    "details": "Détails",
+    "view": "Voir",
+    "suspend": "Suspendre",
+    "unsuspend": "Réactiver",
+    "rejectModalTitle": "Refuser le prestataire",
+    "rejectPlaceholder": "Motif (facultatif)",
+    "detailTitle": "Détails du prestataire",
+    "refreshStripe": "Actualiser le compte Stripe",
+    "columns": { "name": "Nom", "email": "Courriel", "status": "Statut", "stripe": "Stripe", "actions": "Actions" }
+  }
+}

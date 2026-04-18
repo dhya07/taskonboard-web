@@ -1,0 +1,42 @@
+{
+  "app": { "name": "TaskOnBoard Admin" },
+  "nav": {
+    "dashboard": "Dashboard",
+    "providers": "Providers",
+    "customers": "Customers",
+    "bookings": "Bookings",
+    "payments": "Payments",
+    "reviews": "Reviews",
+    "disputes": "Disputes",
+    "settings": "Settings",
+    "logout": "Sign out"
+  },
+  "login": {
+    "title": "Admin sign in",
+    "subtitle": "TaskOnBoard — Canada",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Sign in",
+    "error": "Sign in failed",
+    "notAdmin": "This account is not authorized for admin access."
+  },
+  "topbar": { "searchPlaceholder": "Search…" },
+  "common": { "loading": "Loading…", "error": "Something went wrong", "save": "Save", "cancel": "Cancel", "language": "Language" },
+  "providers": {
+    "title": "Providers",
+    "subtitle": "Review applications and manage status.",
+    "pendingQueue": "Pending approval (next 3)",
+    "allTitle": "All providers",
+    "approve": "Approve",
+    "reject": "Reject",
+    "details": "Details",
+    "view": "View",
+    "suspend": "Suspend",
+    "unsuspend": "Unsuspend",
+    "rejectModalTitle": "Reject provider",
+    "rejectPlaceholder": "Reason (optional)",
+    "detailTitle": "Provider details",
+    "refreshStripe": "Refresh Stripe account status",
+    "columns": { "name": "Name", "email": "Email", "status": "Status", "stripe": "Stripe", "actions": "Actions" }
+  }
+}
