@@ -398,6 +398,23 @@ export default function Providers() {
     }
   }
 
+  async function returnToPending(id) {
+    if (!window.confirm(t("providers.confirmReturnToPending"))) return;
+    await changeStatus(id, "pending");
+  }
+
+  async function restoreApproved(id) {
+    if (!window.confirm(t("providers.confirmRestoreApproved"))) return;
+    await changeStatus(id, "approved");
+  }
+
+  const canReturnToPending = (p) =>
+    (p?.status === "approved" || p?.status === "active") && p?.status !== "suspended";
+
+  /** Re-approve without duplicating the main "Approve" when already in the submitted queue (isPending). */
+  const canRestoreApproved = (p) =>
+    p?.status === "rejected" || (p?.status === "pending" && !isPending(p));
+
   async function refreshStripe(id) {
     setActionBusy(id + "-stripe");
     try {
@@ -799,6 +816,32 @@ export default function Providers() {
                       {t("providers.reloadRecord")}
                     </button>
                   </div>
+                  <div className="rounded-lg border border-gray-200 bg-slate-50 p-4">
+                    <h6 className="text-sm font-semibold text-gray-900">{t("providers.statusOverridesTitle")}</h6>
+                    <p className="mt-1 text-xs text-gray-600">{t("providers.statusOverridesHint")}</p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {canReturnToPending(detail) ? (
+                        <button
+                          type="button"
+                          disabled={!!actionBusy}
+                          className="rounded-lg border border-violet-300 bg-white px-3 py-2 text-sm font-medium text-violet-900 hover:bg-violet-50 disabled:opacity-50"
+                          onClick={() => void returnToPending(detail.uid)}
+                        >
+                          {t("providers.returnToPending")}
+                        </button>
+                      ) : null}
+                      {canRestoreApproved(detail) ? (
+                        <button
+                          type="button"
+                          disabled={!!actionBusy}
+                          className="rounded-lg border border-emerald-300 bg-white px-3 py-2 text-sm font-medium text-emerald-900 hover:bg-emerald-50 disabled:opacity-50"
+                          onClick={() => void restoreApproved(detail.uid)}
+                        >
+                          {t("providers.restoreApproved")}
+                        </button>
+                      ) : null}
+                    </div>
+                  </div>
                 </div>
               ) : null}
 
@@ -1059,6 +1102,26 @@ export default function Providers() {
                   onClick={() => void changeStatus(detail.uid, "active")}
                 >
                   {t("providers.unsuspend")}
+                </button>
+              ) : null}
+              {canReturnToPending(detail) ? (
+                <button
+                  type="button"
+                  disabled={!!actionBusy}
+                  className="rounded-lg border border-violet-300 bg-violet-50 px-3 py-2 text-sm font-medium text-violet-900 hover:bg-violet-100 disabled:opacity-50"
+                  onClick={() => void returnToPending(detail.uid)}
+                >
+                  {t("providers.returnToPending")}
+                </button>
+              ) : null}
+              {canRestoreApproved(detail) ? (
+                <button
+                  type="button"
+                  disabled={!!actionBusy}
+                  className="rounded-lg border border-emerald-300 bg-emerald-50 px-3 py-2 text-sm font-medium text-emerald-900 hover:bg-emerald-100 disabled:opacity-50"
+                  onClick={() => void restoreApproved(detail.uid)}
+                >
+                  {t("providers.restoreApproved")}
                 </button>
               ) : null}
             </div>

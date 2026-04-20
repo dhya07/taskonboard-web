@@ -49,7 +49,6 @@ const PrivacyPolicy = () => {
           <div className="prose prose-lg max-w-none">
             {/* 1. Introduction */}
             <section className="mb-8">
-    
               <h2 className="text-2xl font-bold text-[#1a2332] mb-4">
                 1. Introduction
               </h2>
@@ -1148,7 +1147,6 @@ const PrivacyPolicy = () => {
                   </a>
                 </p>
               </div>
-
             </section>
           </div>
         </div>

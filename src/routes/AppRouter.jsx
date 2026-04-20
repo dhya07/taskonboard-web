@@ -6,6 +6,7 @@ import BecomeTasker from '../pages/BecomeTasker'
 import TermsOfUse from '../pages/TermsOfUse'
 import PrivacyPolicy from '../pages/PrivacyPolicy'
 import CookieNotice from '../pages/CookieNotice'
+import Support from '../pages/Support'
 import { config } from '../utils/config'
 
 const AppRouter = () => {
@@ -36,6 +37,7 @@ const AppRouter = () => {
         <Route path="/terms" element={<TermsOfUse />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/cookies" element={<CookieNotice />} />
+        <Route path="/support" element={<Support />} />
       </Routes>
     </Router>
   )
