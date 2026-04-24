@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 import { useTranslation } from "react-i18next";
 import { auth } from "@/config/firebase.js";
+import logoMark from "@/assets/Logo/Favicon-32.svg";
 
 function hasAdminClaim(claims) {
   const roles = claims?.roles;
@@ -59,6 +60,9 @@ export default function Login() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100 px-4">
       <div className="w-full max-w-md rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
+        <div className="mb-6 flex justify-center">
+          <img src={logoMark} alt="" width={48} height={48} className="shrink-0" />
+        </div>
         <h1 className="text-2xl font-semibold text-gray-900">{t("login.title")}</h1>
         <p className="mt-1 text-sm text-gray-500">{t("login.subtitle")}</p>
         <form className="mt-8 space-y-4" onSubmit={(e) => void handleSubmit(e)}>

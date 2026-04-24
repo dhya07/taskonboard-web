@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { auth } from "@/config/firebase.js";
+import logoMark from "@/assets/Logo/Favicon-32.svg";
 
 const linkClass = ({ isActive }) =>
   `flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
@@ -27,10 +28,15 @@ export default function Sidebar() {
   return (
     <aside className="flex w-64 flex-col border-r border-gray-200 bg-white">
       <div className="border-b border-gray-100 px-5 py-6">
-        <div className="text-lg font-semibold tracking-tight text-gray-900">
-          {t("app.name")}
+        <div className="flex items-center gap-3">
+          <img src={logoMark} alt="" width={32} height={32} className="shrink-0" />
+          <div>
+            <div className="text-lg font-semibold tracking-tight text-gray-900">
+              {t("app.name")}
+            </div>
+            <p className="mt-1 text-xs text-gray-500">TaskOnBoard · CA</p>
+          </div>
         </div>
-        <p className="mt-1 text-xs text-gray-500">TaskOnBoard · CA</p>
       </div>
       <nav className="flex flex-1 flex-col gap-0.5 p-3">
         {items.map(({ to, labelKey, end }) => (
