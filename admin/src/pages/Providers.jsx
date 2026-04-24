@@ -262,6 +262,7 @@ export default function Providers() {
   const [detailError, setDetailError] = useState("");
   const [rejectOpen, setRejectOpen] = useState(null);
   const [rejectReason, setRejectReason] = useState("");
+  const [identityVerifyReason, setIdentityVerifyReason] = useState("");
   const [actionBusy, setActionBusy] = useState("");
   const [copyFlash, setCopyFlash] = useState("");
 
@@ -324,6 +325,7 @@ export default function Providers() {
     setDetail(p);
     setDetailTab("summary");
     setDetailError("");
+    setIdentityVerifyReason("");
   }, []);
 
   const pendingTop = useMemo(() => {
@@ -452,7 +454,22 @@ export default function Providers() {
     if (!window.confirm(t("providers.confirmManualVerify"))) return;
     setActionBusy(id + "-verify");
     try {
-      await api.put(`/admin/providers/${id}/verify-identity`);
+      await api.put(`/admin/providers/${id}/verify-identity`, {
+        reason: identityVerifyReason.trim() || undefined,
+      });
+      setIdentityVerifyReason("");
+      const list = await load();
+      syncDetailFromList(list, id);
+    } finally {
+      setActionBusy("");
+    }
+  }
+
+  async function clearIdentityManualOverride(id) {
+    if (!window.confirm(t("providers.confirmClearIdentityOverride"))) return;
+    setActionBusy(id + "-clear-identity-override");
+    try {
+      await api.put(`/admin/providers/${id}/clear-identity-manual-override`);
       const list = await load();
       syncDetailFromList(list, id);
     } finally {
@@ -778,6 +795,22 @@ export default function Providers() {
                       [t("providers.fields.onboardingCompleted"), String(!!detail.onboardingCompleted)],
                       [t("providers.fields.onboardingStartedAt"), formatCellValue(detail.onboardingStartedAt)],
                       [t("providers.fields.identityVerification"), detail.identityVerificationStatus || "—"],
+                      [
+                        t("providers.fields.stripeIdentityStatus"),
+                        detail.stripeIdentity?.status || "—",
+                      ],
+                      [
+                        t("providers.fields.manualIdentityOverride"),
+                        detail.stripeIdentity?.manuallyVerified ? t("common.yes") : t("common.no"),
+                      ],
+                      [
+                        t("providers.fields.manualIdentityReason"),
+                        detail.stripeIdentity?.manualVerificationReason || "—",
+                      ],
+                      [
+                        t("providers.fields.stripeIdentityLastError"),
+                        detail.stripeIdentity?.lastError != null ? String(detail.stripeIdentity.lastError) : "—",
+                      ],
                       [t("providers.fields.rejectionReason"), detail.rejectionReason || "—"],
                       [t("providers.fields.appliedAt"), formatCellValue(detail.appliedAt)],
                       [t("providers.fields.approvedAt"), formatCellValue(detail.approvedAt)],
@@ -788,6 +821,40 @@ export default function Providers() {
                       [t("providers.fields.lastStripeSync"), formatCellValue(detail.lastStripeSync)],
                     ]}
                   />
+                  <div className="rounded-lg border border-amber-200 bg-amber-50/90 p-4">
+                    <h6 className="text-sm font-semibold text-amber-950">
+                      {t("providers.identityOverrideTitle")}
+                    </h6>
+                    <p className="mt-1 text-xs text-amber-900/90">{t("providers.identityOverrideBody")}</p>
+                    <textarea
+                      className="mt-3 w-full rounded-lg border border-amber-200 bg-white p-2 text-sm text-gray-900"
+                      rows={3}
+                      placeholder={t("providers.identityOverrideReasonPlaceholder")}
+                      value={identityVerifyReason}
+                      onChange={(e) => setIdentityVerifyReason(e.target.value)}
+                      disabled={!!actionBusy}
+                    />
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      <button
+                        type="button"
+                        disabled={!!actionBusy}
+                        className="rounded-lg bg-amber-800 px-3 py-2 text-sm font-medium text-white hover:bg-amber-900 disabled:opacity-50"
+                        onClick={() => void manualVerifyIdentity(detail.uid)}
+                      >
+                        {t("providers.identityOverrideSubmit")}
+                      </button>
+                      {detail.stripeIdentity?.manuallyVerified ? (
+                        <button
+                          type="button"
+                          disabled={!!actionBusy}
+                          className="rounded-lg border border-amber-900/40 bg-white px-3 py-2 text-sm font-medium text-amber-950 hover:bg-amber-100 disabled:opacity-50"
+                          onClick={() => void clearIdentityManualOverride(detail.uid)}
+                        >
+                          {t("providers.clearIdentityManualOverride")}
+                        </button>
+                      ) : null}
+                    </div>
+                  </div>
                   <div className="flex flex-wrap gap-2">
                     {stripeDashboardUrl ? (
                       <a
