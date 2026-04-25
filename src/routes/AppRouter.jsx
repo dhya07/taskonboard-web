@@ -7,6 +7,7 @@ import TermsOfUse from '../pages/TermsOfUse'
 import PrivacyPolicy from '../pages/PrivacyPolicy'
 import CookieNotice from '../pages/CookieNotice'
 import Support from '../pages/Support'
+import PasswordResetBridge from '../pages/PasswordResetBridge'
 import { config } from '../utils/config'
 
 const AppRouter = () => {
@@ -15,6 +16,7 @@ const AppRouter = () => {
   return (
     <Router>
       <Routes>
+        <Route path="/auth-app-password-reset.html" element={<PasswordResetBridge />} />
         {/* Home page - conditionally wrapped with layout */}
         <Route path="/" element={
           isComingSoon ? (

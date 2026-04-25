@@ -1,2 +1,3 @@
 # Netlify: client-side routes (React Router) → index.html
+# auth-app-password-reset.html is also handled in-app (AppRouter) if this rewrite runs first.
 /*    /index.html   200
