@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TaskOnBoard – Email Verification</title>
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; background: #f6f7f9; color: #111; margin: 0; padding: 24px; line-height: 1.45; text-align: center; }
+    p { max-width: 420px; margin: 16px auto; }
+    a { color: #0d6efd; font-weight: 600; word-break: break-all; }
+    .spinner { border: 3px solid #f3f3f3; border-top: 3px solid #0d6efd; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="spinner"></div>
+  <p id="message">Opening TaskOnBoard...</p>
+  <p><a id="open" href="#">Tap here if app doesn't open</a></p>
+  <p style="font-size: 14px; color: #555;">Don't have the app? <a href="https://taskonboard.com/download">Download here</a></p>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var oob = params.get('oobCode');
+      var mode = params.get('mode') || 'verifyEmail';
+      
+      // Check both 'env' and 'app' parameters for environment detection
+      var env = params.get('env') || params.get('app') || 'prod';
+      var scheme = env === 'dev' || env === 'development' ? 'taskonboard-dev' : 'taskonboard';
+      
+      var a = document.getElementById('open');
+      var msg = document.getElementById('message');
+      
+      if (!oob) {
+        msg.textContent = 'Invalid or expired verification link';
+        a.textContent = 'Invalid link';
+        a.removeAttribute('href');
+        document.querySelector('.spinner').style.display = 'none';
+        return;
+      }
+      
+      // Build deep link to verification screen
+      var deep = scheme + '://Auth/email-verified?oobCode=' + encodeURIComponent(oob) + '&mode=' + encodeURIComponent(mode);
+      a.href = deep;
+      
+      // IMMEDIATE redirect - no delay for fastest app opening
+      msg.textContent = 'Opening TaskOnBoard app...';
+      
+      // Attempt 1: Direct redirect (works on some devices)
+      window.location.href = deep;
+      
+      // Attempt 2: Try with replace after 100ms (works on iOS Safari)
+      setTimeout(function() {
+        window.location.replace(deep);
+      }, 100);
+      
+      // Attempt 3: Open in new window (Android fallback)
+      setTimeout(function() {
+        try {
+          window.open(deep, '_system');
+        } catch (e) {
+          // Silent fail
+        }
+      }, 200);
+      
+      // After 2 seconds, show message if still on page
+      setTimeout(function() {
+        msg.textContent = 'Tap the button above to open TaskOnBoard';
+        document.querySelector('.spinner').style.display = 'none';
+      }, 2000);
+    })();
+  </script>
+</body>
+</html>

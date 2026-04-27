@@ -1,0 +1,22 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "KZMMU89CZK.com.taskonboard.app",
+        "paths": [
+          "/auth-app-email-verification.html",
+          "/auth-app-password-reset.html",
+          "/Auth/*",
+          "/verify-email",
+          "/reset-password"
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "KZMMU89CZK.com.taskonboard.app"
+    ]
+  }
+}
